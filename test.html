@@ -1,7 +1,7 @@
 <html>
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r75/three.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js"></script>
+
 
 <script>
 var mesh, renderer, scene, camera, controls;
@@ -27,9 +27,9 @@ function init() {
     scene.add( camera ); //required, since camera has a child light
 
     // controls
-    controls = new THREE.OrbitControls( camera, renderer.domElement );
-    controls.minDistance = 5;
-    controls.maxDistance = 20;
+    //controls = new THREE.OrbitControls( camera, renderer.domElement );
+    //controls.minDistance = 5;
+    //controls.maxDistance = 20;
     
     // ambient
     scene.add( new THREE.AmbientLight( 0xffffff, 0.4 ) );
@@ -43,40 +43,47 @@ function init() {
     scene.add( new THREE.AxisHelper( 20 ) );
 
     // points
-    var points = [new THREE.Vector3(79.67056675591266, -34.596601292254576, -16.66307901741277),
-		  new THREE.Vector3(14.531348934758313, -218.025470009721, -10.37471926517648),
-		  new THREE.Vector3(116.53116356829821, -221.46421077450486, -15.358893087890436),
-		  new THREE.Vector3(100.21018981540601, -134.65082387357373, -16.306206559567897),
-		  new THREE.Vector3(40.297801638946254, -127.95648674611874, -43.80574925942216)];
-   /* for ( var i = 0; i < 18; i ++ ) {
-
-        points.push( new THREE.Vector3( Math.cos( i * Math.PI / 2 ), i / 9 - 1, Math.sin( i * Math.PI / 2 ) ).multiplyScalar( 3 ) );
-
-	}*/
-
-    // path
-    var path = new THREE.CatmullRomCurve3( points );
-
-    // params
+    var points0 = [new THREE.Vector3(79.67056675591266, -34.596601292254576, -16.66307901741277),
+		  new THREE.Vector3(14.531348934758313, -218.025470009721, -10.37471926517648)];
+    
+    var point1 = [new THREE.Vector3(79.67056675591266, -34.596601292254576, -16.66307901741277),
+		  new THREE.Vector3(116.53116356829821, -221.46421077450486, -15.358893087890436)];
+	
+    var point1 = [new THREE.Vector3(40.297801638946254, -127.95648674611874, -43.80574925942216),
+		 new THREE.Vector3(100.21018981540601, -134.65082387357373, -16.306206559567897)];
+	
+	
+     // params
     var pathSegments = 1024;
     var tubeRadius = 2;
     var radiusSegments = 8;
     var closed = false;
+	
+    for ( var i = 0; i < 3; i ++ ) {
+	 // path
+    	var path = new THREE.CatmullRomCurve3( points+i );	
+         // geometry
+    	var geometry = new THREE.TubeGeometry( path, pathSegments, tubeRadius, radiusSegments, closed );
 
-    // geometry
-    var geometry = new THREE.TubeGeometry( path, pathSegments, tubeRadius, radiusSegments, closed );
+    	// to buffer goemetry
+    	geometry = new THREE.BufferGeometry().fromGeometry( geometry );
+    	nMax = geometry.attributes.position.count;
 
-    // to buffer goemetry
-    geometry = new THREE.BufferGeometry().fromGeometry( geometry );
-    nMax = geometry.attributes.position.count;
-
-    // material
-   var material = new THREE.MeshLambertMaterial({color:0XF3FFE2});
+    	// material
+   	var material = new THREE.MeshLambertMaterial({color:0XF3FFE2});
     
-    // mesh
-    mesh = new THREE.Mesh( geometry, material );
-    mesh.position.set(0,150,0);
-    scene.add( mesh );
+    	// mesh
+    	mesh = new THREE.Mesh( geometry, material );
+    	mesh.position.set(0,150,0);
+    	scene.add( mesh );
+
+	}
+
+   
+
+   
+
+   
     
 }
 

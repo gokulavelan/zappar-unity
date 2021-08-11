@@ -15,8 +15,8 @@ var count1 = 0,count2 = 0,count3 = 0;
 init();
 animate();
 first();
-second();
-third();
+//second();
+//third();
 
 function init() {
 
@@ -131,9 +131,10 @@ function animate() {
 
 		
 function first(){
-	 if(count1 == 1024)
+	 if(count1 == nMax1)
         {
             cancelAnimationFrame(animationTracker);
+	    second();
             return;
         }
 	 nEnd1 = ( nEnd1 + nStep1 ) % nMax1;
@@ -143,9 +144,10 @@ function first(){
 	 animationTracker = requestAnimationFrame(first);
 }
 function second(){
-	    if(count2 == 1024)
+	    if(count2 == nMax2)
            {
                cancelAnimationFrame(animationTracker);
+	       third();
                return;
            }
 	    nEnd2 = ( nEnd2 + nStep2 ) % nMax2;
@@ -154,7 +156,7 @@ function second(){
 	    animationTracker = requestAnimationFrame(second);
 }
 function third(){
-	    if(count3 == 1024)
+	    if(count3 == nMax3)
 	   {
 	       cancelAnimationFrame(animationTracker);
 	       return;

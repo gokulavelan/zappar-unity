@@ -44,9 +44,13 @@ function init() {
 
     // points
     var points = [];
-    for ( var i = 0; i < 18; i ++ ) {
+    for ( var i = 0; i < 4; i ++ ) {
 
-        points.push( new THREE.Vector3( Math.cos( i * Math.PI / 2 ), i / 9 - 1, Math.sin( i * Math.PI / 2 ) ).multiplyScalar( 3 ) );
+        points.push([new THREE.Vector3(25.95643508422563, -11.977091226095894, 352.372797254237),
+	new THREE.Vector3(-158.62470834078573, 557.9861958267873, 327.0863861329846),
+	new THREE.Vector3(-365.3504677553152, 1.656674138485016, 351.7543155879878),
+	new THREE.Vector3(-288.2219161097559, 211.8761592495856, 334.2731916650672),
+	new THREE.Vector3(-54.41263507014776, 211.83675528240138, 338.8299372578326)];
 
 	}
 

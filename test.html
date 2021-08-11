@@ -23,7 +23,7 @@ function init() {
     
     // camera
     camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 1000 );
-    camera.position.set( 0, 0, 100 );
+    camera.position.set( 0, 0, 10000 );
     scene.add( camera ); //required, since camera has a child light
 
     // controls
@@ -43,7 +43,7 @@ function init() {
     scene.add( new THREE.AxisHelper( 20 ) );
 
     // points
-    var points = [new THREE.Vector3(0, 0, 0),
+    var points = [new THREE.Vector3(14.531348934758313, -218.025470009721, -10.37471926517648),
 	new THREE.Vector3(79.67056675591266, -34.596601292254576, -16.66307901741277),
 	new THREE.Vector3(116.53116356829821, -221.46421077450486, -15.358893087890436),
 	new THREE.Vector3(100.21018981540601, -134.65082387357373, -16.306206559567897),

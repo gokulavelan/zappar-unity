@@ -131,7 +131,7 @@ function animate() {
 
 		
 function first(){
-	 if(count1 == 50)
+	 if(count1 == 1024)
         {
             cancelAnimationFrame(animationTracker);
             return;
@@ -143,7 +143,7 @@ function first(){
 	 animationTracker = requestAnimationFrame(first);
 }
 function second(){
-	    if(count2 == 50)
+	    if(count2 == 1024)
            {
                cancelAnimationFrame(animationTracker);
                return;
@@ -154,7 +154,7 @@ function second(){
 	    animationTracker = requestAnimationFrame(second);
 }
 function third(){
-	    if(count3 == 50)
+	    if(count3 == 1024)
 	   {
 	       cancelAnimationFrame(animationTracker);
 	       return;

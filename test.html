@@ -1,7 +1,7 @@
 <html>
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r75/three.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js"></script>
 
 <script>
 var mesh, renderer, scene, camera, controls;
@@ -27,9 +27,9 @@ function init() {
     scene.add( camera ); //required, since camera has a child light
 
     // controls
-    //controls = new THREE.OrbitControls( camera, renderer.domElement );
-    //controls.minDistance = 5;
-   // controls.maxDistance = 20;
+    controls = new THREE.OrbitControls( camera, renderer.domElement );
+    controls.minDistance = 5;
+    controls.maxDistance = 20;
     
     // ambient
     scene.add( new THREE.AmbientLight( 0xffffff, 0.4 ) );

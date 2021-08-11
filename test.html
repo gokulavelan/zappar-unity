@@ -131,11 +131,11 @@ function animate() {
 
 		
 function first(){
-	 if(count1 == nMax1)
+	 if(count1 == 512)
         {
-            cancelAnimationFrame(animationTracker);
-	    second();
+            cancelAnimationFrame(animationTracker);	
             return;
+	    second();
         }
 	 nEnd1 = ( nEnd1 + nStep1 ) % nMax1;
 	 mesh1.geometry.setDrawRange( 0, nEnd1 );
@@ -144,11 +144,11 @@ function first(){
 	 animationTracker = requestAnimationFrame(first);
 }
 function second(){
-	    if(count2 == nMax2)
+	    if(count2 == 512)
            {
                cancelAnimationFrame(animationTracker);
-	       third();
                return;
+	       third();
            }
 	    nEnd2 = ( nEnd2 + nStep2 ) % nMax2;
 	    mesh2.geometry.setDrawRange( 0, nEnd2 ); 
@@ -156,7 +156,7 @@ function second(){
 	    animationTracker = requestAnimationFrame(second);
 }
 function third(){
-	    if(count3 == nMax3)
+	    if(count3 == 512)
 	   {
 	       cancelAnimationFrame(animationTracker);
 	       return;

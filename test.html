@@ -138,7 +138,7 @@ function first(){
             return;
         }
 	 nEnd1 = ( nEnd1 + nStep1 ) % nMax1;
-	// mesh1.geometry.setDrawRange( 0, nEnd1 );
+	 mesh1.geometry.setDrawRange( 0, nEnd1 );
 	 console.log(nEnd1);
 	 count1 += 1
 	 animationTracker = requestAnimationFrame(first);
@@ -151,7 +151,7 @@ function second(){
            }
 	    nEnd2 = ( nEnd2 + nStep2 ) % nMax2;
 	console.log(nEnd2);
-	   // mesh2.geometry.setDrawRange( 0, nEnd2 ); 
+	    mesh2.geometry.setDrawRange( 0, nEnd2 ); 
   	    count2 += 1
 	    animationTracker = requestAnimationFrame(second);
 }
@@ -163,7 +163,7 @@ function third(){
 	   }
            nEnd3 = ( nEnd3 + nStep3 ) % nMax3;
 	console.log(nEnd3);
-          // mesh3.geometry.setDrawRange( 0, nEnd3 );
+           mesh3.geometry.setDrawRange( 0, nEnd3 );
 	   count3 += 1
 	   animationTracker = requestAnimationFrame(third);
 }

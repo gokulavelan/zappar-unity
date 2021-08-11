@@ -119,18 +119,42 @@ function init() {
 function animate() {
 
     requestAnimationFrame( animate );
+    var first = (function() {
+	    var executed = false;
+			    return function() {
+						if (!executed) {
+						    executed = true;
+						        nEnd1 = ( nEnd1 + nStep1 ) % nMax1;
+   							 mesh1.geometry.setDrawRange( 0, nEnd1 );
+						}
+					    };
+				})();
+    var second = (function() {
+	    var executed = false;
+			    return function() {
+						if (!executed) {
+						    executed = true;
+						            nEnd2 = ( nEnd2 + nStep2 ) % nMax2;
+    							    mesh2.geometry.setDrawRange( 0, nEnd2 );
+						}
+					    };
+				})();		
 
-    nEnd1 = ( nEnd1 + nStep1 ) % nMax1;
-    mesh1.geometry.setDrawRange( 0, nEnd1 );
-	 
-    nEnd2 = ( nEnd2 + nStep2 ) % nMax2;
-    mesh2.geometry.setDrawRange( 0, nEnd2 );
-	  
-    nEnd3 = ( nEnd3 + nStep3 ) % nMax3;
-    mesh3.geometry.setDrawRange( 0, nEnd3 );
+    var third = (function() {
+	    var executed = false;
+			    return function() {
+						if (!executed) {
+						    executed = true;
+							    nEnd3 = ( nEnd3 + nStep3 ) % nMax3;
+							    mesh3.geometry.setDrawRange( 0, nEnd3 );
+						}
+					    };
+				})();	 
 
     renderer.render( scene, camera );
-
+    first();
+    second();
+    third();
 }
 
 

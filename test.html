@@ -59,32 +59,58 @@ function init() {
     var radiusSegments = 8;
     var closed = false;
 	
-    for ( var i = 0; i < 3; i ++ ) {
+  //1111
 	 // path
-	    console.log('points'+i);
-    	var path = new THREE.CatmullRomCurve3( 'points'+i );	
+    	var path1 = new THREE.CatmullRomCurve3( ponits1 );	
          // geometry
-    	var geometry = new THREE.TubeGeometry( path, pathSegments, tubeRadius, radiusSegments, closed );
+    	var geometry1 = new THREE.TubeGeometry( path1, pathSegments, tubeRadius, radiusSegments, closed );
 
     	// to buffer goemetry
-    	geometry = new THREE.BufferGeometry().fromGeometry( geometry );
-    	nMax = geometry.attributes.position.count;
+    	geometry1 = new THREE.BufferGeometry().fromGeometry( geometry1 );
+    	nMax1 = geometry1.attributes.position.count;
 
     	// material
-   	var material = new THREE.MeshLambertMaterial({color:0XF3FFE2});
+   	var material1 = new THREE.MeshLambertMaterial({color:0XF3FFE2});
     
     	// mesh
-    	mesh = new THREE.Mesh( geometry, material );
-    	mesh.position.set(0,150,0);
-    	scene.add( mesh );
+    	mesh1 = new THREE.Mesh( geometry1, material1 );
+    	mesh1.position.set(0,150,0);
+    	scene.add( mesh1 );
 
-	}
-
+//2222
    
+    	var path2 = new THREE.CatmullRomCurve3( ponits2 );	
+         // geometry
+    	var geometry2 = new THREE.TubeGeometry( path2, pathSegments, tubeRadius, radiusSegments, closed );
 
-   
+    	// to buffer goemetry
+    	geometry2 = new THREE.BufferGeometry().fromGeometry( geometry2 );
+    	nMax2 = geometry2.attributes.position.count;
 
+    	// material
+   	var material2 = new THREE.MeshLambertMaterial({color:0XF3FFE2});
+    
+    	// mesh
+    	mesh2 = new THREE.Mesh( geometry2, material2 );
+    	mesh2.position.set(0,150,0);
+    	scene.add( mesh2 );
    
+//3333
+       	var path3 = new THREE.CatmullRomCurve3( ponits3 );	
+         // geometry
+    	var geometry3 = new THREE.TubeGeometry( path3, pathSegments, tubeRadius, radiusSegments, closed );
+
+    	// to buffer goemetry
+    	geometry3 = new THREE.BufferGeometry().fromGeometry( geometry3 );
+    	nMax3 = geometry3.attributes.position.count;
+
+    	// material
+   	var material3 = new THREE.MeshLambertMaterial({color:0XF3FFE2});
+    
+    	// mesh
+    	mesh3 = new THREE.Mesh( geometry3, material3 );
+    	mesh3.position.set(0,150,0);
+    	scene.add( mesh3 );
     
 }
 
@@ -92,9 +118,14 @@ function animate() {
 
     requestAnimationFrame( animate );
 
-    nEnd = ( nEnd + nStep ) % nMax;
-
-    mesh.geometry.setDrawRange( 0, nEnd );
+    nEnd1 = ( nEnd + nStep ) % nMax1;
+    mesh1.geometry.setDrawRange( 0, nEnd1 );
+	 
+    nEnd2 = ( nEnd + nStep ) % nMax2;
+    mesh2.geometry.setDrawRange( 0, nEnd2 );
+	  
+    nEnd3 = ( nEnd + nStep ) % nMax3;
+    mesh3.geometry.setDrawRange( 0, nEnd3 );
 
     renderer.render( scene, camera );
 

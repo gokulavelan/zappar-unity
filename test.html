@@ -6,8 +6,10 @@
 <script>
 var mesh, renderer, scene, camera, controls;
 
-var nEnd = 0, nMax, nStep = 90; // 30 faces * 3 vertices/face
-
+var nEnd1 = 0, nMax1, nStep1 = 90; // 30 faces * 3 vertices/face
+var nEnd2 = 0, nMax2, nStep2 = 90; 
+var nEnd3 = 0, nMax3, nStep3 = 90;
+	
 init();
 animate();
 
@@ -118,13 +120,13 @@ function animate() {
 
     requestAnimationFrame( animate );
 
-    nEnd1 = ( nEnd + nStep ) % nMax1;
+    nEnd1 = ( nEnd1 + nStep1 ) % nMax1;
     mesh1.geometry.setDrawRange( 0, nEnd1 );
 	 
-    nEnd2 = ( nEnd + nStep ) % nMax2;
+    nEnd2 = ( nEnd2 + nStep2 ) % nMax2;
     mesh2.geometry.setDrawRange( 0, nEnd2 );
 	  
-    nEnd3 = ( nEnd + nStep ) % nMax3;
+    nEnd3 = ( nEnd3 + nStep3 ) % nMax3;
     mesh3.geometry.setDrawRange( 0, nEnd3 );
 
     renderer.render( scene, camera );

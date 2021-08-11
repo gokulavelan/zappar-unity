@@ -131,35 +131,37 @@ function animate() {
 
 		
 function first(){
-	 if(count1 == 100)
+	 if(count1 == 1024)
         {
             cancelAnimationFrame(animationTracker);	
             return;
         }
 	 nEnd1 = ( nEnd1 + nStep1 ) % nMax1;
 	 mesh1.geometry.setDrawRange( 0, nEnd1 );
-	
+	console.log(nEnd1);
 	 count1 += 1
 	 animationTracker = requestAnimationFrame(first);
 }
 function second(){
-	    if(count2 == nEnd2)
+	    if(count2 == 1024)
            {
                cancelAnimationFrame(animationTracker);
                return;
            }
 	    nEnd2 = ( nEnd2 + nStep2 ) % nMax2;
+	console.log(nEnd2);
 	    mesh2.geometry.setDrawRange( 0, nEnd2 ); 
   	    count2 += 1
 	    animationTracker = requestAnimationFrame(second);
 }
 function third(){
-	    if(count3 == nEnd3)
+	    if(count3 == 1024)
 	   {
 	       cancelAnimationFrame(animationTracker);
 	       return;
 	   }
            nEnd3 = ( nEnd3 + nStep3 ) % nMax3;
+	console.log(nEnd3);
            mesh3.geometry.setDrawRange( 0, nEnd3 );
 	   count3 += 1
 	   animationTracker = requestAnimationFrame(third);

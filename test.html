@@ -49,7 +49,7 @@ function init() {
     var points1 = [new THREE.Vector3(79.67056675591266, -34.596601292254576, -16.66307901741277),
 		  new THREE.Vector3(116.53116356829821, -221.46421077450486, -15.358893087890436)];
 	
-    var poinst2 = [new THREE.Vector3(40.297801638946254, -127.95648674611874, -43.80574925942216),
+    var points2 = [new THREE.Vector3(40.297801638946254, -127.95648674611874, -43.80574925942216),
 		 new THREE.Vector3(100.21018981540601, -134.65082387357373, -16.306206559567897)];
 	
 	
@@ -61,7 +61,7 @@ function init() {
 	
   //1111
 	 // path
-    	var path1 = new THREE.CatmullRomCurve3( ponits1 );	
+    	var path1 = new THREE.CatmullRomCurve3( points0 );	
          // geometry
     	var geometry1 = new THREE.TubeGeometry( path1, pathSegments, tubeRadius, radiusSegments, closed );
 
@@ -79,7 +79,7 @@ function init() {
 
 //2222
    
-    	var path2 = new THREE.CatmullRomCurve3( ponits2 );	
+    	var path2 = new THREE.CatmullRomCurve3( points1 );	
          // geometry
     	var geometry2 = new THREE.TubeGeometry( path2, pathSegments, tubeRadius, radiusSegments, closed );
 
@@ -96,7 +96,7 @@ function init() {
     	scene.add( mesh2 );
    
 //3333
-       	var path3 = new THREE.CatmullRomCurve3( ponits3 );	
+       	var path3 = new THREE.CatmullRomCurve3( points2 );	
          // geometry
     	var geometry3 = new THREE.TubeGeometry( path3, pathSegments, tubeRadius, radiusSegments, closed );
 

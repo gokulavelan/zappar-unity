@@ -61,7 +61,7 @@ function init() {
 	
     for ( var i = 0; i < 3; i ++ ) {
 	 // path
-    	var path = new THREE.CatmullRomCurve3( points+i );	
+    	var path = new THREE.CatmullRomCurve3( 'points'+i );	
          // geometry
     	var geometry = new THREE.TubeGeometry( path, pathSegments, tubeRadius, radiusSegments, closed );
 

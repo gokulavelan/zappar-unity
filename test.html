@@ -71,10 +71,12 @@ function init() {
     nMax = geometry.attributes.position.count;
 
     // material
-    var material = new THREE.MeshPhongMaterial( {
-        color: 0x00ffff,
-        side: THREE.DoubleSide
-    } );
+    var material = new THREE.ShaderMaterial( {
+		uniforms        : uniforms,
+		vertexShader    : document.getElementById( 'vertex_shader' ).textContent,
+		fragmentShader  : document.getElementById( 'fragment_shader' ).textContent,
+		side: THREE.DoubleSide
+	} );
     
     // mesh
     mesh = new THREE.Mesh( geometry, material );

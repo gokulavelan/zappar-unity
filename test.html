@@ -16,8 +16,8 @@ var animationTracker;
 init();
 animate();
 first();
-//second();
-//third();
+second();
+third();
 
 function init() {
 
@@ -140,7 +140,6 @@ function first(){
 	 nEnd1 = ( nEnd1 + nStep1 ) % nMax1;
 	 mesh1.geometry.setDrawRange( 0, nEnd1 );
 	 console.log(nEnd1);
-	 first();
 	 count1 += 1
 	 animationTracker = requestAnimationFrame(first);
 }
@@ -149,7 +148,6 @@ function second(){
            {
                cancelAnimationFrame(animationTracker);
                return;
-	       third();
            }
 	    nEnd2 = ( nEnd2 + nStep2 ) % nMax2;
 	console.log(nEnd2);

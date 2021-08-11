@@ -10,8 +10,13 @@ var nEnd1 = 0, nMax1, nStep1 = 90; // 30 faces * 3 vertices/face
 var nEnd2 = 0, nMax2, nStep2 = 90; 
 var nEnd3 = 0, nMax3, nStep3 = 90;
 	
+var count1 = 0,count2 = 0,count3 = 0;
+	
 init();
 animate();
+first();
+second();
+third();
 
 function init() {
 
@@ -119,36 +124,46 @@ function init() {
 function animate() {
 
     requestAnimationFrame( animate );
-    var fst = false, snd = false, thrd = false;
-	
-   if(fst == false){
-	   first();
-	   fst = true;
-   }
-   if(snd == false){
-	   second();
-	   snd = true;
-   }
-   if(thrd == false){
-	   third();
-	   thrd = true;
-   }
-	function first(){
-		nEnd1 = ( nEnd1 + nStep1 ) % nMax1;
-		 mesh1.geometry.setDrawRange( 0, nEnd1 );
-	}
-	function second(){
-		    nEnd2 = ( nEnd2 + nStep2 ) % nMax2;
-		    mesh2.geometry.setDrawRange( 0, nEnd2 ); 
-	}
-	function third(){
-			  nEnd3 = ( nEnd3 + nStep3 ) % nMax3;
-		          mesh3.geometry.setDrawRange( 0, nEnd3 );
-	}
+ 
     renderer.render( scene, camera );
   
 }
 
+		
+function first(){
+	 if(count1 == 50)
+        {
+            cancelAnimationFrame(animationTracker);
+            return;
+        }
+	 nEnd1 = ( nEnd1 + nStep1 ) % nMax1;
+	 mesh1.geometry.setDrawRange( 0, nEnd1 );
+	
+	 count1 += 1
+	 animationTracker = requestAnimationFrame(first);
+}
+function second(){
+	    if(count2 == 50)
+           {
+               cancelAnimationFrame(animationTracker);
+               return;
+           }
+	    nEnd2 = ( nEnd2 + nStep2 ) % nMax2;
+	    mesh2.geometry.setDrawRange( 0, nEnd2 ); 
+  	    count2 += 1
+	    animationTracker = requestAnimationFrame(second);
+}
+function third(){
+	    if(count3 == 50)
+	   {
+	       cancelAnimationFrame(animationTracker);
+	       return;
+	   }
+           nEnd3 = ( nEnd3 + nStep3 ) % nMax3;
+           mesh3.geometry.setDrawRange( 0, nEnd3 );
+	   count3 += 1
+	   animationTracker = requestAnimationFrame(third);
+}
 
 </script>
 </body>

@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<title>Text in Three.js</title>
+		<style>
+			body { margin: 0; }
+			canvas { display: block; }
+		</style>
+	</head>
+	<body>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.js"></script>
+		<script>
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+
+const loader = new THREE.FontLoader();
+				loader.load( 'https://cdnjs.cloudflare.com/ajax/libs/three.js/examples/fonts/helvetiker_regular.typeface.json', function ( font ) {
+        const color = new THREE.Color( 0x006699 );
+        const matLite = new THREE.MeshBasicMaterial( {
+						color: color,
+						transparent: true,
+						opacity: 0.4,
+						side: THREE.DoubleSide
+					} );
+          const message = "Three.js\nStroke text.";
+
+					const shapes = font.generateShapes( message, 100 );
+
+					const geometry = new THREE.ShapeGeometry( shapes );
+
+					geometry.computeBoundingBox();
+
+					const xMid = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
+
+					geometry.translate( xMid, 0, 0 );
+
+					// make shape ( N.B. edge view not visible )
+
+					const text = new THREE.Mesh( geometry, matLite );
+					
+					scene.add( text );
+          });
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+      
+      var canvas = document.createElement("canvas");
+  
+
+			var animate = function () {
+				requestAnimationFrame( animate );
+
+			
+
+				renderer.render( scene, camera );
+			};
+
+			animate();
+		</script>
+	</body>
+</html>

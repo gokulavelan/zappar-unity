@@ -11,7 +11,7 @@
 		<script>
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-
+			scene.add(camera);
 const loader = new THREE.FontLoader();
 				loader.load( 'helvetiker_regular.typeface.json', function ( font ) {
         const color = new THREE.Color( 0x006699 );

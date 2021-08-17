@@ -11,9 +11,10 @@
 		<script>
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+			camera.position.set(0, -400, 400);
 			scene.add(camera);
 			var tempDigit = 0;
-			var roastTemperature;
+			var roastTemperature,message;
 			function tempLoop(){
 				setTimeout(function(){
 					message = tempDigit+'\u00B0'+'C';

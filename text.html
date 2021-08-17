@@ -12,48 +12,64 @@
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
 			scene.add(camera);
-const loader = new THREE.FontLoader();
-				loader.load( 'helvetiker_regular.typeface.json', function ( font ) {
-        const color = new THREE.Color( 0x006699 );
-        const matLite = new THREE.MeshBasicMaterial( {
-						color: color,
-						transparent: true,
-						opacity: 0.4,
-						side: THREE.DoubleSide
-					} );
-          const message = "Three.js\nStroke text.";
-
-					const shapes = font.generateShapes( message, 100 );
-
-					const geometry = new THREE.ShapeGeometry( shapes );
-
-					geometry.computeBoundingBox();
-
-					const xMid = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
-
-					geometry.translate( xMid, 0, 0 );
-
-					// make shape ( N.B. edge view not visible )
-
-					const text = new THREE.Mesh( geometry, matLite );
-					
-					scene.add( text );
-          });
+			var tempDigit = 0;
+			var roastTemperature;
+			function tempLoop(){
+				setTimeout(function(){
+					message = tempDigit+'\u00B0'+'C';
+					refreshTextTemp();
+					tempDigit++;
+					if(tempDigit<216){
+						tempLoop();
+					}
+				},0050)
+			}
+			
+			
+			function createTempLoader(){
+				const loader = new THREE.FontLoader();
+				loader.load( 'helvetiker_regular.typeface.json', function ( response) {
+					font = response;
+         		 });
+			}
+		        function createTextTemp(){
+				  let geometryTemp = new THREE.TextGeometry(message, {
+				      font: font,
+				      size: 80,
+				      height: 5,
+				      curveSegments: 12,
+				      bevelEnabled: false,
+				      bevelThickness: 10,
+				      bevelSize: 3,
+				      bevelSegments: 5
+				    });
+				    let materialTemp = new THREE.MeshPhongMaterial({ 
+				      color: 0xffffff, 
+				      overdraw: 0.5,
+				      shininess: 70
+				    });
+				    geometryTemp.center();
+				    roastTemperature = new THREE.Mesh(geometryTemp, materialTemp);
+				    scene.add(roastTemperature);
+			}
+			
+			function refreshTextTemp(){
+				scene.remove(roastTemperature);
+				createTextTemp();
+			}
 			var renderer = new THREE.WebGLRenderer();
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
       
-      var canvas = document.createElement("canvas");
+     			 var canvas = document.createElement("canvas");
   
 
 			var animate = function () {
 				requestAnimationFrame( animate );
-
-			
-
 				renderer.render( scene, camera );
 			};
-
+			tempLoop();
+			createTextLoader();
 			animate();
 		</script>
 	</body>
